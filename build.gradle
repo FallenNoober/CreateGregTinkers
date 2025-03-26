@@ -1,8 +1,11 @@
 buildscript {
     repositories {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
+        maven { url = "https://lss233.littleservice.cn/repositories/minecraft" }
+        maven{ url 'https://maven.aliyun.com/nexus/content/groups/public/'}
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
         mavenCentral()
+        google()
     }
     dependencies {
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
@@ -12,7 +15,8 @@ buildscript {
 plugins {
     id 'eclipse'
     id 'idea'
-    id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 }
 
 apply plugin: 'org.spongepowered.mixin'
@@ -131,6 +135,9 @@ mixin {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    google()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    jcenter()
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
 
